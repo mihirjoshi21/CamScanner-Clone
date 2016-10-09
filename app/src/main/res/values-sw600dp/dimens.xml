@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Screen According Dimensions -->
+    <dimen name="dimens_label">60dp</dimen>
+    <dimen name="dimens_heading">20sp</dimen>
+    <dimen name="dimens_sub_heading">15sp</dimen>
+
+    <!-- Margins -->
+    <dimen name="dimens_normal_margin">20dp</dimen>
+
+</resources>

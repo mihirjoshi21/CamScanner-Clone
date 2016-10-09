@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="TextColor">#000000</color>
+    <color name="color_toolbar">#00C3B5</color>
+    <color name="HeadingBackgroundColor">#EBECED</color>
+    <color name="DividerBackgroundColor">#296197</color>
+    <color name="WhiteColor">#FFFFFF</color>
+    <color name="FooterButtonBackgroundColor">#A9ABAE</color>
+    <color name="SaveButtonBackgroundColor">#82AF6F</color>
+    <color name="CancelButtonBackgroundColor">#D25A46</color>
+    <color name="NewProfileFooterColor">#333</color>
+    <color name="NewButtonBackgroundColor">#A9ABAE</color>
+    <color name="NewProfileBackgroundColor">#D2D3D5</color>
+    <color name="LeftRoundedShapeBackground">#90C9C2</color>
+    <color name="SettingLayoutBackgroundColor">#AFD9D5</color>
+    <color name="CircleColor">#70B2B0</color>
+    <color name="IconsBackgroundColor">#006958</color>
+    <color name="RightRoundedCurveBackground">#01806d</color>
+    <color name="SectionHeaderColor">#448d8b</color>
+    <color name="ShowPasswordTextColor">#258EE2</color>
+    <color name="orange">#FDA123</color>
+
+    <!-- Image Processing -->
+    <color name="image_processing_upper_bar">#01a89e</color>
+    <color name="image_processing_lower_bar">#1E2939</color>
+    <color name="image_processing_polygon_view_circle_stroke">#ff59a9ff</color>
+    <color name="image_processing_polygon_view_circle_background">#90e5f8ff</color>
+    <color name="image_processing_transparent_background">#55000000</color>
+    <color name="image_processing_control_background">#cc4285f4</color>
+
+</resources>

@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2048M"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "crmnextmobile.crmnext.com.ocr"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+            moduleName "ImageProcessing"
+        }
+
+        sourceSets.main
+                {
+                    jni.srcDirs = []
+                    jniLibs.srcDir 'src/main/libs'
+                }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    task ndkBuild(type: Exec) {
+        def ndkDir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build.cmd", '-C', file('src/main').absolutePath
+    }
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn ndkBuild
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.squareup:otto:1.3.8'
+    compile "com.android.support:support-v13:+"
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.rmtheis:tess-two:5.4.1'
+    compile 'io.card:android-sdk:5.3.4'
+
+}

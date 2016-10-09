@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CamScanner Clone</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Image Processing -->
+    <string name="image_processing_contrast">Contrast</string>
+    <string name="image_processing_brightness">Brightness</string>
+    <string name="image_processing_magic_color">Magic Color</string>
+    <string name="image_processing_gray_mode">Gray Mode</string>
+    <string name="image_processing_b_w">B&amp;W</string>
+    <string name="image_processing_original">Original</string>
+    <string name="image_processing_mirror">Mirror</string>
+    <string name="image_processing_rotate_clockwise">Rotate Clockwise</string>
+    <string name="image_processing_ocr">Ocr</string>
+    <string name="image_processing_rotate_anticlockwise">Rotate Anti Clockwise</string>
+    <string name="image_processing_back">Back</string>
+    <string name="image_processing_save">Save</string>
+    <string name="image_processing_edit_Image">Editable Image</string>
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+    <!--  OCR Data -->
+    <string name="text_name">Name: %1$s</string>
+    <string name="text_father_name">Father\'s Name: %1$s</string>
+    <string name="text_dob">Dob: %1$s</string>
+    <string name="text_pan">PAN: %1$s</string>
+
+
+</resources>
