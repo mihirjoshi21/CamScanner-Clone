@@ -13,26 +13,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # v3 کی جگہ v4 استعمال کریں اور صرف ضروری پیکج کی نشاندہی کریں
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
-        with:
-          packages: 'platform-tools'
 
-      # sdkmanager کو چلانے کے لیے Java 17 لازمی ہے
+      # 1. aapt کی 32-bit لائبریریوں کی تنصیب
+      - name: Install 32-bit libraries for aapt
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lib32z1 lib32stdc++6
+
+      # 2. sdkmanager کے لیے Java 17
       - name: Setup Java 17 for sdkmanager
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
+      # 3. build-tools کا نیا ورژن (23.0.2 کے بجائے 25.0.0 یا اس سے نیا)
       - name: Install Android SDK packages
         env:
           SKIP_JDK_VERSION_CHECK: true
         run: |
-          sdkmanager --install "platforms;android-23" "build-tools;23.0.2"
+          sdkmanager --install "platforms;android-23" "build-tools;25.0.0"
 
-      # APK بلڈ کے لیے Java 8 پر واپس سوئچ کریں
+      # 4. APK بلڈ کے لیے Java 8
       - name: Switch to Java 8
         uses: actions/setup-java@v4
         with:
@@ -40,13 +44,8 @@ jobs:
           java-version: '8'
 
       - name: Build APK
+        env:
+          SLAVE_AAPT_TIMEOUT: 30
         run: |
           chmod +x gradlew
           ./gradlew clean assembleDebug --stacktrace
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: CamScanner-APK
-          path: app/build/outputs/apk/debug/*.apk
-          if-no-files-found: error
