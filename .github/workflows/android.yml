@@ -13,8 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # v3 کی جگہ v4 استعمال کریں اور صرف ضروری پیکج کی نشاندہی کریں
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       # sdkmanager کو چلانے کے لیے Java 17 لازمی ہے
       - name: Setup Java 17 for sdkmanager
