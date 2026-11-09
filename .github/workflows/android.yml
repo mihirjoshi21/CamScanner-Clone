@@ -1,3 +1,4 @@
+
 name: Build CamScanner APK
 
 on:
@@ -22,9 +23,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Accept Android SDK licenses
+        run: |
+          set +o pipefail
+          yes | sdkmanager --licenses || true
+
       - name: Install SDK packages
         run: |
-          yes | sdkmanager --licenses
           sdkmanager "platforms;android-23" "build-tools;23.0.2"
 
       - name: Switch to Java 8
@@ -45,4 +50,3 @@ jobs:
           name: CamScanner-APK
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: warn
-          
