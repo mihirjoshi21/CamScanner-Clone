@@ -13,21 +13,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # صرف یہاں v3 کی جگہ v4 کر دیا گیا ہے
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-        with:
-          packages: 'platform-tools'
+        uses: android-actions/setup-android@v3
 
+      # sdkmanager کو چلانے کے لیے Java 17 لازمی ہے
+      - name: Setup Java 17 for sdkmanager
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install Android SDK packages
+        env:
+          SKIP_JDK_VERSION_CHECK: true
+        run: |
+          sdkmanager --install "platforms;android-23" "build-tools;23.0.2"
+
+      # APK بلڈ کے لیے Java 8 پر واپس سوئچ کریں
       - name: Switch to Java 8
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '8'
-
-      - name: Install Android SDK packages
-        run: |
-          sdkmanager --install "platforms;android-23" "build-tools;23.0.2"
 
       - name: Build APK
         run: |
